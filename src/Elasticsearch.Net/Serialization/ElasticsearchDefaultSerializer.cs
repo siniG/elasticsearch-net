@@ -1,3 +1,4 @@
+using Elasticsearch.Net.IO.EventStore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,11 +16,11 @@ namespace Elasticsearch.Net.Serialization
 		}
 		public T Deserialize<T>(Stream stream)
 		{
-			var ms = stream as MemoryStream;
+			var ms = stream as BufferPoolStream;
 			//if (ms != null)
 			// return SimpleJson.DeserializeObject<T>(ms.GetBuffer().Utf8String());
 
-			using (ms = new MemoryStream())
+			using (ms = new BufferPoolStream(new BufferPool()))
 			{
 				stream.CopyTo(ms);
 				byte[] buffer = ms.ToArray();
@@ -31,7 +32,7 @@ namespace Elasticsearch.Net.Serialization
 		public Task<T> DeserializeAsync<T>(Stream stream)
 		{
 			var tcs = new TaskCompletionSource<T>();
-			using (var ms = new MemoryStream())
+			using (var ms = new BufferPoolStream(new BufferPool()))
 			{
 				// return a task that reads the stream asynchronously 
 				// and finally deserializes the result to T.
@@ -44,7 +45,7 @@ namespace Elasticsearch.Net.Serialization
 
 		public IEnumerable<Task> ReadStreamAsync<T>(Stream stream, TaskCompletionSource<T> tcs)
 		{
-			using (var ms = new MemoryStream())
+			using (var ms = new BufferPoolStream(new BufferPool()))
 			{
 				// Copy all data from the response stream
 				var buffer = new byte[BUFFER_SIZE];

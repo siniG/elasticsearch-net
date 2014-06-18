@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IO\EventStore\BufferManager.cs" />
+    <Compile Include="IO\EventStore\BufferPool.cs" />
+    <Compile Include="IO\EventStore\BufferPoolStream.cs" />
+    <Compile Include="IO\EventStore\UnableToAllocateBufferException.cs" />
+    <Compile Include="IO\EventStore\UnableToCreateMemoryException.cs" />
     <Compile Include="Connection\IRequestConfiguration.cs" />
     <Compile Include="Connection\IRequestConnectionConfiguration.cs" />
     <Compile Include="Connection\TransportRequestState.cs" />
