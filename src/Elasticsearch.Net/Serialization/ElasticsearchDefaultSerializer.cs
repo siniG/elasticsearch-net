@@ -32,15 +32,10 @@ namespace Elasticsearch.Net.Serialization
 		public Task<T> DeserializeAsync<T>(Stream stream)
 		{
 			var tcs = new TaskCompletionSource<T>();
-			using (var ms = new BufferPoolStream(new BufferPool()))
-			{
-				// return a task that reads the stream asynchronously 
-				// and finally deserializes the result to T.
-				this.Iterate<T>(ReadStreamAsync(stream, tcs), tcs);
-				return tcs.Task;
-					
-			}
-
+			// return a task that reads the stream asynchronously 
+			// and finally deserializes the result to T.
+			this.Iterate<T>(ReadStreamAsync(stream, tcs), tcs);
+			return tcs.Task;
 		}
 
 		public IEnumerable<Task> ReadStreamAsync<T>(Stream stream, TaskCompletionSource<T> tcs)
