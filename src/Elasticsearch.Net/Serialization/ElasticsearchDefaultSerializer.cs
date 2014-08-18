@@ -101,6 +101,15 @@ namespace Elasticsearch.Net.Serialization
 			return serialized.Utf8Bytes();
 		}
 
+        public string Stringify(object data, SerializationFormatting formatting = SerializationFormatting.Indented)
+        {
+            var serialized = SimpleJson.SerializeObject(data);
+            if (formatting == SerializationFormatting.None)
+                serialized = RemoveNewLinesAndTabs(serialized);
+
+            return serialized;
+        }
+
 		public string Stringify(object valueType)
 		{
 			return ElasticsearchDefaultSerializer.DefaultStringify(valueType);

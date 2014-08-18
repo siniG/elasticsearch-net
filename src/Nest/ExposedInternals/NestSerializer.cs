@@ -31,6 +31,13 @@ namespace Nest
 			return serialized.Utf8Bytes();
 		}
 
+        public virtual string Stringify(object data, SerializationFormatting formatting = SerializationFormatting.Indented)
+        {
+            var format = formatting == SerializationFormatting.None ? Formatting.None : Formatting.Indented;
+            var serialized = JsonConvert.SerializeObject(data, format, this._serializationSettings);
+            return serialized;
+        }
+
 		public string Stringify(object valueType)
 		{
 			if (valueType == null)

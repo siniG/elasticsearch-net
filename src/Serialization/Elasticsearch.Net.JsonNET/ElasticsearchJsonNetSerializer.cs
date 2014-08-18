@@ -66,6 +66,16 @@ namespace Elasticsearch.Net.JsonNet
 			return Encoding.UTF8.GetBytes(json);
 		}
 
+        public string Stringify(object data, SerializationFormatting formatting = SerializationFormatting.Indented)
+        {
+            var format = formatting == SerializationFormatting.Indented
+                ? Formatting.Indented
+                : Formatting.None;
+            var json = JsonConvert.SerializeObject(data, format, this._settings);
+
+            return json;
+        }
+
 		public string Stringify(object valueType)
 		{
 			return ElasticsearchDefaultSerializer.DefaultStringify(valueType);

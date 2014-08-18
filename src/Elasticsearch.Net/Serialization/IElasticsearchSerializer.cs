@@ -13,6 +13,14 @@ namespace Elasticsearch.Net.Serialization
 
 		byte[] Serialize(object data, SerializationFormatting formatting = SerializationFormatting.Indented);
 
+        /// <summary>
+        /// used to get json object
+        /// </summary>
+        /// <param name="data">object to serialize</param>
+        /// <param name="formatting">fomratted</param>
+        /// <returns></returns>
+        string Stringify(object data, SerializationFormatting formatting = SerializationFormatting.Indented);
+
 		/// <summary>
 		/// Used to stringify valuetypes to string (i.e querystring parameters and route parameters).
 		/// </summary>

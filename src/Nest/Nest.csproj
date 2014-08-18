@@ -155,6 +155,7 @@
     <Compile Include="DSL\Filter\GeoShapeMultiPolygonFilterDescriptor.cs" />
     <Compile Include="DSL\Filter\GeoShapePolygonFilterDescriptor.cs" />
     <Compile Include="DSL\Filter\GeoShapePointFilterDescriptor.cs" />
+    <Compile Include="DSL\Filter\NativeFilterDescriptor.cs" />
     <Compile Include="DSL\GetAliasDescriptor.cs" />
     <Compile Include="DSL\Query\Functions\FieldValueFactorDescriptor.cs" />
     <Compile Include="DSL\Query\GeoShapeMultiPointQueryDescriptor.cs" />
@@ -679,6 +680,7 @@
     <Compile Include="DSL\Filter\LimitFilterDescriptor.cs" />
     <Compile Include="DSL\Filter\IdsFilterDescriptor.cs" />
     <Compile Include="DSL\Filter\ExistsFilterDescriptor.cs" />
+    <Compile Include="Resolvers\Converters\Filters\NativeFilterConverter.cs" />
     <Compile Include="Resolvers\Converters\GeoShapeConverterBase.cs" />
     <Compile Include="Resolvers\Converters\Queries\GeoShapeQueryJsonReader.cs" />
     <Compile Include="Resolvers\Converters\SimilarityCollectionConverter.cs" />
